@@ -21,15 +21,7 @@ public class AnimalsController : ControllerBase
     {
         return Ok(_animalService.GetAnimals(orderBy));
     }
-
-
-
-    [HttpGet("{idAnimal:int}")]
-    public IActionResult GetAnimal(int animalId)
-    {
-        var animal = _animalService.GetAnimal(animalId);
-        return Ok(animal);
-    }
+    
 
     [HttpPut("{idAnimal:int}")]
     public IActionResult UpdateAnimal(int animalId, [FromBody] Animal updatedAnimal)

@@ -44,11 +44,6 @@ public class AnimalService : IAnimalService
         return animals;
     }
 
-    public Animal GetAnimal(int animalId)
-    {
-        return _animalRepository.GetAnimal(animalId);
-    }
-
 
     public int UpdateAnimal(int animalId, [FromBody] Animal updatedAnimal)
     {
