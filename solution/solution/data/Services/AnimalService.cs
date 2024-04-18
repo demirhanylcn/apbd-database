@@ -48,13 +48,6 @@ public class AnimalService : IAnimalService
 
     public int UpdateAnimal(int animalId, [FromBody] Animal updatedAnimal)
     {
-        var animal = _animalRepository.GetAnimal(animalId);
-        animal.name = updatedAnimal.name;
-        animal.description = updatedAnimal.description;
-        animal.category = updatedAnimal.category;
-        animal.area = updatedAnimal.area;
-        _animalRepository.UpdateAnimal(animalId, updatedAnimal);
-
         return _animalRepository.UpdateAnimal(animalId, updatedAnimal);
     }
 
