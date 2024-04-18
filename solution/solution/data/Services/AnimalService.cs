@@ -1,5 +1,4 @@
-﻿
-using database_api.data;
+﻿using database_api.data;
 using database_api.data.Model;
 using database_api.data.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 public class AnimalService : IAnimalService
 {
     private IAnimalRepository _animalRepository;
+
     public AnimalService(IAnimalRepository animalRepository)
     {
         _animalRepository = animalRepository;
@@ -43,6 +43,7 @@ public class AnimalService : IAnimalService
 
         return animals;
     }
+
     public Animal GetAnimal(int animalId)
     {
         return _animalRepository.GetAnimal(animalId);
@@ -56,14 +57,13 @@ public class AnimalService : IAnimalService
         animal.description = updatedAnimal.description;
         animal.category = updatedAnimal.category;
         animal.area = updatedAnimal.area;
-        _animalRepository.UpdateAnimal(animalId,updatedAnimal);
-        
+        _animalRepository.UpdateAnimal(animalId, updatedAnimal);
+
         return _animalRepository.UpdateAnimal(animalId, updatedAnimal);
     }
 
     public int DeleteAnimal(int animalId)
     {
-
         return _animalRepository.DeleteAnimal(animalId);
     }
 
@@ -71,6 +71,4 @@ public class AnimalService : IAnimalService
     {
         return _animalRepository.AddAnimal(animal);
     }
-
-    
 }
