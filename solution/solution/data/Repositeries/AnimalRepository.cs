@@ -95,8 +95,9 @@ public class AnimalRepository : IAnimalRepository
         SqlConnection connection =
             new SqlConnection(
                 "Data Source=db-mssql;Initial Catalog=2019SBD;Integrated Security=True;");
-        SqlCommand command = new SqlCommand();
         connection.Open();
+        SqlCommand command = new SqlCommand();
+        command.Connection = connection;
         
         command.CommandText = "DELETE FROM ANIMAL WHERE idAnimal = @id";
         command.Parameters.AddWithValue("@id", animalId);
@@ -110,8 +111,9 @@ public class AnimalRepository : IAnimalRepository
         SqlConnection connection =
             new SqlConnection(
                 "Data Source=db-mssql;Initial Catalog=2019SBD;Integrated Security=True;");
-        SqlCommand command = new SqlCommand();
         connection.Open();
+        SqlCommand command = new SqlCommand();
+        command.Connection = connection;
         
         command.CommandText =
             "INSERT INTO ANIMAL( Name, Description, Category, Area) VALUES (@name,@description,@category,@area)";
