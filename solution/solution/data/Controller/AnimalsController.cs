@@ -30,27 +30,37 @@ public class AnimalsController : ControllerBase
     {
         var animal = _animalService.GetAnimal(animalId);
         return Ok(animal);
+        
     }
 
     [HttpPut("{idAnimal:int}")]
     public IActionResult UpdateAnimal(int animalId, [FromBody] Animal updatedAnimal)
     {
-        _animalService.UpdateAnimal(animalId, updatedAnimal);
-        return NoContent();
+        var affectedCount = _animalService.UpdateAnimal(animalId, updatedAnimal);
+        if (affectedCount == 0)
+            return NotFound();
+    
+        return Ok(affectedCount);
     }
 
     [HttpPost]
     public IActionResult AddAnimal([FromBody] Animal animal)
     {
-        _animalService.AddAnimal(animal);
-        return StatusCode(StatusCodes.Status201Created);
+        var affectedCount = _animalService.AddAnimal(animal);
+        if (affectedCount == 0)
+            return NotFound();
+    
+        return Ok(affectedCount);
         
     }
 
     [HttpDelete("{idAnimal:int}")]
     public IActionResult DeleteAnimal(int animalId)
     {
-        _animalService.DeleteAnimal(animalId);
-        return NoContent();
+        var affectedCount = _animalService.DeleteAnimal(animalId);
+        if (affectedCount == 0)
+            return NotFound();
+    
+        return Ok(affectedCount);
     }
 }
