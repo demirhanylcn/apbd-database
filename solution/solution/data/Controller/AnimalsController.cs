@@ -24,9 +24,9 @@ public class AnimalsController : ControllerBase
     
 
     [HttpPut("{idAnimal:int}")]
-    public IActionResult UpdateAnimal(int animalId, [FromBody] Animal updatedAnimal)
+    public IActionResult UpdateAnimal(int idAnimal, [FromBody] Animal updatedAnimal)
     {
-        var affectedCount = _animalService.UpdateAnimal(animalId, updatedAnimal);
+        var affectedCount = _animalService.UpdateAnimal(idAnimal, updatedAnimal);
         if (affectedCount == 0)
             return NotFound();
 
@@ -36,7 +36,8 @@ public class AnimalsController : ControllerBase
     [HttpPost]
     public IActionResult AddAnimal([FromBody] Animal animal)
     {
-        var affectedCount = _animalService.AddAnimal(animal);
+        var createdAnimal = animal;
+        var affectedCount = _animalService.AddAnimal(createdAnimal);
         if (affectedCount == 0)
             return NotFound();
 
@@ -44,9 +45,9 @@ public class AnimalsController : ControllerBase
     }
 
     [HttpDelete("{idAnimal:int}")]
-    public IActionResult DeleteAnimal(int animalId)
+    public IActionResult DeleteAnimal(int idAnimal)
     {
-        var affectedCount = _animalService.DeleteAnimal(animalId);
+        var affectedCount = _animalService.DeleteAnimal(idAnimal);
         if (affectedCount == 0)
             return NotFound();
 

@@ -45,6 +45,7 @@ public class AnimalService : IAnimalService
     }
 
 
+
     public int UpdateAnimal(int animalId, [FromBody] Animal updatedAnimal)
     {
         var animal = _animalRepository.GetAnimal(animalId);
